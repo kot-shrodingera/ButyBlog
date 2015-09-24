@@ -1,3 +1,40 @@
-<h2 id="title">Welcome to Ember</h2>
+<div class="container-fluid">
+  <div class="row">
+    <div id="menu-button">
+      <i class="flaticon-educational17" id="imenu-button"></i>ButyBlog
+    </div>
+    <nav>
+      <ul id="navigation">
+        {{#link-to "feed" tagName="li"}}
+          <a href>
+            <i class="flaticon-blog1"></i>Feed
+          </a>
+        {{/link-to}}
+        {{#if session.isAuthenticated}}
+          {{#link-to "profile" tagName="li"}}
+            <a href>
+              <i class="flaticon-user233"></i>Profile
+            </a>
+          {{/link-to}}
+          <li>
+            <a {{action "logout"}} href>
+              <i class="flaticon-opened33"></i>Logout
+            </a>
+          </li>
+        {{else}}
+          {{#link-to "login" tagName="li"}}
+            <a href>
+              <i class="flaticon-arrows14"></i>Login
+            </a>
+          {{/link-to}}
+        {{/if}}
+      </ul>
+    </nav>
 
-{{outlet}}
+    <div class="content container">
+      <div class="display-center">
+        {{outlet}}
+      </div>
+    </div>
+  </div>
+</div>

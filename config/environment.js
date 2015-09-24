@@ -13,10 +13,24 @@ module.exports = function(environment) {
       }
     },
 
+    contentSecurityPolicy: {
+      "style-src": "'self' 'unsafe-inline'",
+      "connect-src": "'self' http://3a6d1d9f.ngrok.io",
+      "img-src": "'self' http://3a6d1d9f.ngrok.io",
+      "script-src": "'self' 'unsafe-eval'"
+    },
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
     }
+  };
+
+  ENV['simple-auth'] = {
+    routeAfterAuthentication: 'feed',
+    // routeIfAlreadyAuthenticated: 'index.feed',
+    crossOriginWhitelist: ['http://3a6d1d9f.ngrok.io'],
+    authorizer: 'authorizer:custom'
   };
 
   if (environment === 'development') {
@@ -25,6 +39,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.apiURL = "http://3a6d1d9f.ngrok.io"
   }
 
   if (environment === 'test') {

@@ -1,0 +1,31 @@
+{{#each model as |post|}}
+<!--   <div class="container lolipop">
+    <div class="post-image"><img src={{post.image}}></div>
+    <div class="post-text">
+      <h1>{{post.title}}</h1>
+      <p>{{post.preview}}</p>
+    </div>
+    <div class="pull-right">
+      {{#link-to "comments" post tagName="button" class="btn btn-danger"}}
+        Read More!
+      {{/link-to}}  
+    </div>
+  </div> -->
+
+  <div class="post">
+    {{#if post.image}}
+      <div class="lolipop post-img">
+        <img src={{post.image}}>
+      </div>
+    {{/if}}
+    <div class="post-body">
+      <div class="lolipop post-header">
+        <h1>{{post.title}}</h1>
+      </div>
+      <div class="lolipop post-text">
+        {{post.text}}
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+{{/each}}
