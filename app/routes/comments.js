@@ -9,12 +9,6 @@ export default Ember.Route.extend({
       let postImg = Ember.$('.full-post-img');
       let imageContent = Ember.$('.image-content');
 
-      // console.log(Ember.$('.full-post-text').outerHeight());
-      // Ember.$('.comments').load(function() {
-      //   console.log(123);
-        // console.log(Ember.$('.full-post-text').outerHeight())
-      // });
-
       Ember.$('#full-post-bg-1').css("height", Ember.$('.full-post-text').outerHeight());
       Ember.$('#full-post-bg-1').css("width", Ember.$('.display-center').width());
 
