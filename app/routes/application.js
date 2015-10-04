@@ -2,10 +2,10 @@ import Ember from 'ember';
 import ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
-  render: function() {
+  
+  render: function(){
     this._super();
     Ember.run.scheduleOnce("afterRender", this, function() {
-
       Ember.$('#menu-button').click(function() {
         Ember.$('nav').toggleClass('active');
       });
@@ -15,8 +15,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
           Ember.$('nav').removeClass('active');
         }
       });
-
     });
   }
 });
-

@@ -3,10 +3,21 @@
   {{/link-to}}
 </div>
 
-<div class="container lolipop">
-  <div class="post-image"><img src={{model.image}}></div>
-  <div class="post-text">
+<div class="full-post">
+  {{#if model.image}}
+    <div class="full-post-img">
+      <img src={{model.image}} class="image-content">
+    </div>
+  {{/if}}
+  <div id="full-post-bg-1"></div>
+  <div id="full-post-bg-2"></div>
+  <div class="full-post-text">
     <h1>{{model.title}}</h1>
+    <div id="full-post-tags">
+      {{#each model.tags as |tag|}}
+        <span class="label label-default">{{tag.name}}</span>&nbsp;
+      {{/each}}
+    </div>
     <p>{{model.text}}</p>
   </div>
 </div>

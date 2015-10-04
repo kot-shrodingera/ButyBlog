@@ -1,12 +1,12 @@
-<div class="container lolipop">
+<div class="lolipop login">
   <form {{action 'authenticate' on='submit'}}>
     <div class="form-group">
       <label for="identification">Login</label>
-      {{input class="form-control" value=identification placeholder='Enter Login'}}
+      {{input class="form-control" id="identification" value=identification placeholder='Enter Login'}}
     </div>
     <div  class="form-group">
       <label for="password">Password</label>
-      {{input class="form-control" value=password placeholder='Enter Password' type='password'}}
+      {{input class="form-control" id="password" value=password placeholder='Enter Password' type='password'}}
     </div>
     <button class="btn btn-default" type="submit">Login</button>
   </form>
