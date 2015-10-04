@@ -19,5 +19,16 @@
       {{/each}}
     </div>
     <p>{{model.text}}</p>
+    <div class="comments">
+    {{model.comments.length}} Comments
+      {{#each model.comments as |comment|}}
+        <div class="lolipop-comment">
+          <i class="flaticon-blog1"/>
+          <p>{{comment.message}}</p>
+        </div>
+      {{/each}}
+    </div>
   </div>
+
+
 </div>

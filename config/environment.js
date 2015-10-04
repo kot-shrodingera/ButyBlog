@@ -17,7 +17,7 @@ module.exports = function(environment) {
       "style-src": "'self' 'unsafe-inline'",
       "connect-src": "'self' http://5ce3da9c.ngrok.io",
       "img-src": "'self' http://5ce3da9c.ngrok.io",
-      "script-src": "'self' 'unsafe-eval' http://0556e331.ngrok.io:49152"
+      "script-src": "'self' 'unsafe-eval'"
     },
 
     APP: {

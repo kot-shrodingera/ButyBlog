@@ -14,6 +14,8 @@
           {{#each post.tags as |tag|}}
             <span class="label label-default">{{tag.name}}</span>&nbsp;
           {{/each}}
+          <br>
+          {{post.comments.length}} Comments
         </div>
         <div class="lolipop feed-post-text">
           <p>{{post.text}}</p>
@@ -30,6 +32,8 @@
           {{#each post.tags as |tag|}}
             <span class="label label-default">{{tag.name}}</span>&nbsp;
           {{/each}}
+          <br>
+          {{post.comments.length}} Comments
         </div>
         <div class="lolipop feed-post-text">
           <p>{{post.text}}</p>

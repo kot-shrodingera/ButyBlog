@@ -9,6 +9,12 @@ export default Ember.Route.extend({
       let postImg = Ember.$('.full-post-img');
       let imageContent = Ember.$('.image-content');
 
+      // console.log(Ember.$('.full-post-text').outerHeight());
+      // Ember.$('.comments').load(function() {
+      //   console.log(123);
+        // console.log(Ember.$('.full-post-text').outerHeight())
+      // });
+
       Ember.$('#full-post-bg-1').css("height", Ember.$('.full-post-text').outerHeight());
       Ember.$('#full-post-bg-1').css("width", Ember.$('.display-center').width());
 
@@ -20,17 +26,11 @@ export default Ember.Route.extend({
 });
 
 function setBGSize(post, height, width) {
-  console.log(height, width);
-
   let bg1 = Ember.$('#full-post-bg-1');
   let bg2 = Ember.$('#full-post-bg-2');
   let fullWidth = Ember.$('.display-center').width();
   let pPaddingLeft = parseInt(Ember.$('p', post).css('padding-left'));
   let textHeight = Ember.$('.full-post-text').outerHeight();
-
-console.log(height);
-console.log(width);
-console.log(height && width);
 
   if (height && width) {
     bg1.css("height", Math.min(height, textHeight));
