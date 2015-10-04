@@ -5,12 +5,12 @@
 
 <div class="full-post">
   {{#if model.image}}
-    <div class="full-post-img">
+    <div class="lolipop full-post-img">
       <img src={{model.image}} class="image-content">
     </div>
   {{/if}}
-  <div id="full-post-bg-1"></div>
-  <div id="full-post-bg-2"></div>
+  <div class="lolipop" id="full-post-bg-1"></div>
+  <div class="lolipop" id="full-post-bg-2"></div>
   <div class="full-post-text">
     <h1>{{model.title}}</h1>
     <div id="full-post-tags">
@@ -18,15 +18,16 @@
         <span class="label label-default">{{tag.name}}</span>&nbsp;
       {{/each}}
     </div>
-    <p>{{model.text}}</p>
-    <div class="comments">
-    {{model.comments.length}} Comments
-      {{#each model.comments as |comment|}}
-        <div class="lolipop-comment">
-          <i class="flaticon-blog1"/>
-          <p>{{comment.message}}</p>
-        </div>
-      {{/each}}
-    </div>
+    <p>
+      {{model.text}}<br>
+      {{model.comments.length}} Comments
+    </p>
+    <div class="clearfix"></div>
   </div>
+  {{#each model.comments as |comment|}}
+    <div class="lolipop comment">
+      <i class="flaticon-blog1"/>{{comment.user.name}}
+      <p>{{comment.message}}</p>
+    </div>
+  {{/each}}
 </div>
