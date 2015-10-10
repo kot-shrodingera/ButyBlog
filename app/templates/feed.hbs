@@ -1,8 +1,8 @@
 {{#each model as |post|}}
   <div class="feed-post">
-    {{#if post.image}}
+    {{#if post.img}}
       <div class="lolipop feed-post-img">
-        <img src={{post.image}} class="image-content">
+        <img src={{post.img}} class="image-content">
       </div>
       <div class="feed-post-body">
         <div class="lolipop feed-post-header">
@@ -11,6 +11,8 @@
               {{post.title}}
             {{/link-to}}
           </h1>
+          &nbsp;posted by {{post.user.name}}
+          <br>
           {{#each post.tags as |tag|}}
             <span class="label label-default">{{tag.name}}</span>&nbsp;
           {{/each}}
@@ -29,6 +31,8 @@
               {{post.title}}
             {{/link-to}}
           </h1>
+          &nbsp;posted by {{post.user.name}}
+          <br>
           {{#each post.tags as |tag|}}
             <span class="label label-default">{{tag.name}}</span>&nbsp;
           {{/each}}

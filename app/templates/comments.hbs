@@ -3,31 +3,55 @@
   {{/link-to}}
 </div>
 
-<div class="full-post">
-  {{#if model.image}}
-    <div class="lolipop full-post-img">
-      <img src={{model.image}} class="image-content">
+<div class="lolipop full-post">
+  {{#if model.img}}
+    <div class="full-post-img">
+      <img src={{model.img}} class="image-content">
     </div>
   {{/if}}
-  <div class="lolipop" id="full-post-bg-1"></div>
-  <div class="lolipop" id="full-post-bg-2"></div>
   <div class="full-post-text">
     <h1>{{model.title}}</h1>
-    <div id="full-post-tags">
-      {{#each model.tags as |tag|}}
-        <span class="label label-default">{{tag.name}}</span>&nbsp;
-      {{/each}}
+    <div class="full-post-information">
+      posted by {{model.user.name}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{moment-format model.created_at "DD.MM.YYYY"}}&nbsp;&nbsp;
+        {{#each model.tags as |tag|}}
+          <div class="tag">{{tag.name}}</div>&nbsp;
+        {{/each}}
     </div>
     <p>
-      {{model.text}}<br>
-      {{model.comments.length}} Comments
+      {{model.text}}
     </p>
     <div class="clearfix"></div>
   </div>
-  {{#each model.comments as |comment|}}
-    <div class="lolipop comment">
-      <i class="flaticon-blog1"/>{{comment.user.name}}
-      <p>{{comment.message}}</p>
-    </div>
-  {{/each}}
 </div>
+
+{{#if session.isAuthenticated}}
+  <div class="lolipop comment-input">
+    <span class="comment-input-invite">Add your comment ({{model.comments.length}} Comments)</span>
+    <div class="comment-textarea">{{textarea value=commentText}}</div>
+    <button {{action "addComment"}} class="comment-send-button">Send</button>
+    <div class="clearfix"></div>
+  </div>
+{{/if}}
+
+{{#each model.comments as |comment|}}
+  <div class="lolipop comment">
+    <div class="comment-left">
+      <img class="comment-avatar">
+      <div class="clearfix"></div>
+      <span class="comment-username">{{comment.user.name}}</span>
+    </div>
+    <div class="comment-right">
+      <p>{{comment.message}}</p>
+      <div class="comment-time-and-del">
+        {{moment-format comment.created_at "HH:mm"}}
+        {{moment-format comment.created_at "DD:MM:YYYY"}}
+<!--         {{#if (eq session.currentUser.id comment.user.id)}}
+        {{/if}} -->
+          <button {{action "delComment" comment}} class="comment-del-button">Delete comment</button>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="clearfix"></div>
+{{/each}}

@@ -5,5 +5,6 @@ export default DS.Model.extend({
   name: DS.attr(),
   surname: DS.attr(),
   created_at: DS.attr(),
+  avatar: DS.attr(),
   posts: DS.hasMany("post", {async: true})
 });

@@ -3,6 +3,8 @@ import Base from 'simple-auth/authenticators/base';
 import config from '../config/environment';
 
 export default Base.extend({
+  store: Ember.inject.service(),
+
   tokenEndpoint: config.apiURL + "/api/v1/users/sign_in",
 
   restore(data) {
@@ -28,9 +30,11 @@ export default Base.extend({
         type:        'POST',
         data:        data,
       }).then(function (response){
+        let currentUser = _this.get("store").push(response.user);
         resolve({ 
-          token: response.user_token,
-          email: response.user_email
+          token: response.auth_token,
+          email: response.user_email,
+          user: currentUser
         });
       }, function (xhr) {
         reject( xhr.error() );

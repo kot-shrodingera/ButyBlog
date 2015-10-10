@@ -1,4 +1,5 @@
 /* jshint node: true */
+var API = "http://a9d12646.ngrok.io";
 
 module.exports = function(environment) {
   var ENV = {
@@ -15,8 +16,8 @@ module.exports = function(environment) {
 
     contentSecurityPolicy: {
       "style-src": "'self' 'unsafe-inline'",
-      "connect-src": "'self' http://5ce3da9c.ngrok.io",
-      "img-src": "'self' http://5ce3da9c.ngrok.io",
+      "connect-src": "'self' " + API,
+      "img-src": "'self' " + API,
       "script-src": "'self' 'unsafe-eval' http://0556e331.ngrok.io:49152"
     },
 
@@ -29,8 +30,9 @@ module.exports = function(environment) {
   ENV['simple-auth'] = {
     routeAfterAuthentication: 'feed',
     // routeIfAlreadyAuthenticated: 'index.feed',
-    crossOriginWhitelist: ['http://5ce3da9c.ngrok.io'],
-    authorizer: 'authorizer:custom'
+    crossOriginWhitelist: [API],
+    authorizer: 'authorizer:custom',
+    session: 'session:custom'
   };
 
   if (environment === 'development') {
@@ -39,7 +41,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.apiURL = "http://5ce3da9c.ngrok.io"
+    ENV.apiURL = API
   }
 
   if (environment === 'test') {
